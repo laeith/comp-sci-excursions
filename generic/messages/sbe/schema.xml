@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbe:messageSchema xmlns:sbe="http://fixprotocol.io/2016/sbe"
+                   package="baseline"
+                   id="1"
+                   version="0"
+                   semanticVersion="5.2"
+                   description="PingPong schema"
+                   byteOrder="littleEndian">
+  <types>
+    <composite name="messageHeader" description="Message identifiers and length of message root.">
+      <type name="blockLength" primitiveType="uint16"/>
+      <type name="templateId" primitiveType="uint16"/>
+      <type name="schemaId" primitiveType="uint16"/>
+      <type name="version" primitiveType="uint16"/>
+    </composite>
+    <composite name="groupSizeEncoding" description="Repeating group dimensions.">
+      <type name="blockLength" primitiveType="uint16"/>
+      <type name="numInGroup" primitiveType="uint16"/>
+    </composite>
+    <composite name="varStringEncoding" description="Variable length UTF-8 String.">
+      <type name="length" primitiveType="uint32" maxValue="1073741824"/>
+      <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8"/>
+    </composite>
+    <enum name="BooleanType" encodingType="uint8" description="Boolean Type.">
+      <validValue name="F" description="False value representation.">0</validValue>
+      <validValue name="T" description="True value representation.">1</validValue>
+    </enum>
+  </types>
+
+  <sbe:message name="PingPong" id="1" description="PingPong message">
+    <field name="id" id="1" type="uint64"/>
+    <field name="version" id="2" type="int32"/>
+    <field name="isImportant" id="3" type="BooleanType"/>
+    <group name="names" id="4" dimensionType="groupSizeEncoding">
+      <data name="name" id="5" type="varStringEncoding"/>
+    </group>
+    <group name="ints" id="6" dimensionType="groupSizeEncoding">
+      <field name="record" id="7" type="int32"/>
+    </group>
+    <group name="doubles" id="8" dimensionType="groupSizeEncoding">
+      <field name="record" id="9" type="double"/>
+    </group>
+    <data name="message" id="10" type="varStringEncoding"/>
+  </sbe:message>
+</sbe:messageSchema>

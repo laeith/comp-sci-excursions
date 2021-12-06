@@ -1,0 +1,44 @@
+{
+  "namespace": "com.laeith.playground.avro.messages",
+  "type": "record",
+  "name": "PingPong",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "version",
+      "type": "int"
+    },
+    {
+      "name": "message",
+      "type": "string"
+    },
+    {
+      "name": "is_important",
+      "type": "boolean"
+    },
+    {
+      "name": "names",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    },
+    {
+      "name": "ints",
+      "type": {
+        "type": "array",
+        "items": "int"
+      }
+    },
+    {
+      "name": "doubles",
+      "type": {
+        "type": "array",
+        "items": "double"
+      }
+    }
+  ]
+}

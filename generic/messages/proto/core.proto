@@ -1,0 +1,54 @@
+syntax = "proto3";
+package com.laeith.playground.protobuf.messages;
+
+import "google/protobuf/any.proto";
+
+option optimize_for = SPEED;
+
+// Messages for wire protocol testing
+message PingPong {
+  int64 id = 1;
+  int32 version = 2;
+  string message = 3;
+  bool is_important = 4;
+  repeated string names = 5;
+  repeated int32 ints = 6;
+  repeated double doubles = 7;
+}
+
+message StringMsg {
+  string str1 = 1;
+  string str2 = 2;
+  string str3 = 3;
+  string str4 = 4;
+  string str5 = 5;
+  repeated string strings = 6;
+}
+
+message DoublesMsg {
+  double double1 = 1;
+  double double2 = 2;
+  double double3 = 3;
+  double double4 = 4;
+  double double5 = 5;
+  repeated double doubles = 6;
+}
+
+// Messages used in IPC testing
+message Ping {
+  int64 id = 1;
+  string message = 2;
+  bool is_important = 3;
+  repeated string names = 4;
+  repeated int32 ints = 5;
+  repeated double doubles = 6;
+}
+
+message Pong {
+  int64 id = 1;
+  string message = 2;
+  bool is_important = 3;
+  repeated string names = 4;
+  repeated int32 ints = 5;
+  repeated double doubles = 6;
+}
