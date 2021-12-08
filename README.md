@@ -25,6 +25,7 @@ the goal. Never stop learning. Ever.
 | Year    | Description                                         |
 | ---     |:---                                                 |
 | 2021    | [Advent of Code 2021](aoc/adventofcode2021)         |
+| 2021    | [Wire protocol benchmarks](generic/src/main/java/com/laeith/com/sci/excursions/wire)         |
 
 ---
 
