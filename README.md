@@ -25,7 +25,6 @@ the goal. Never stop learning. Ever.
 | Year    | Description                                         |
 | ---     |:---                                                 |
 | 2021    | [Advent of Code 2021](aoc/adventofcode2021)         |
-| 2021    | test 2                                              |
 
 ---
 
