@@ -3,6 +3,8 @@ from collections import deque
 from utils import get_input
 
 
+# TODO: Marcin: Create recursive version? Should be far cleaner and potentially more efficient
+
 def simulate_lantern_reproduction(simulation_days: int) -> int:
     """
     :rtype:int Returns number of lanterns after provided number of days
