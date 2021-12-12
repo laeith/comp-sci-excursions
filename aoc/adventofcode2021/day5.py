@@ -4,6 +4,8 @@ from typing import Set, Tuple, List
 from utils import get_input
 
 
+# Note: since the switch to Python 3.10 this solution could leverage pattern matching
+
 def parse_to_list_of_points(line: str) -> List[List[List[int]]]:
     """
     :return: A list of point pairs e.g. [[['1', 2'], ['1', '7']], [['9', 2'], ['3', '2']]]

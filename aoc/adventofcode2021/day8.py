@@ -24,6 +24,9 @@ def part1():
     return number_of_unique_digits
 
 
+# This one can also be done 'in reverse' where we actually discover real mapping between segments and only then,
+# given that mapping, do: decode segments in values -> map real segments to numbers
+# Though that solution was far longer and 'iterative'
 def part2():
     data = get_input(8, parse_note)
 
