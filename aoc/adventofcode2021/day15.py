@@ -1,6 +1,48 @@
 from queue import PriorityQueue
 
-from utils import get_input, create_grid, grid_width, grid_height, grid_to_rows
+from utils import get_input, create_grid, grid_to_rows, grid_width, grid_height
+
+
+# I blindly started with DFS, given that it's relatively quick to implement and hoping it would be enough,
+# maybe with some additional optimizations...
+# Usually it is feasible for tiny/human-sized graphs, or if our goal is to just visit all possible nodes,
+# but then I saw the main input and realized that for the optimum I would need to check ALL possible routes
+# roughly ~4^100 for part1 alone!
+# So Dijskra or Bellman Ford?
+# We also have a relatively good heuristic that following a diagonal should be close to the optimal path.
+# Anyway, this is another great example where naive DFS takes ages while a better algorithm (Dijskra) is almost
+# instantaneous
+# 604
+def part1():
+    cave_map: list[list[int]] = get_input(15, lambda line: [int(risk_level) for risk_level in line])
+    return dijskra(cave_map)
+
+
+# For part2 I switched from 'rows/columns' as list[list[any]] implementation to 'grid' as dict, although
+# dijskra algorithm was untouched.
+# 2907
+def part2():
+    cave_map: list[list[int]] = get_input(15, lambda line: [int(risk_level) for risk_level in line])
+
+    cave_grid = create_grid(cave_map)
+    cave_width = grid_width(cave_grid)
+    cave_height = grid_height(cave_grid)
+
+    entire_cave_grid = dict()
+
+    for dx in range(0, 5):
+        for dy in range(0, 5):
+            for point, val in cave_grid.items():
+                x, y = point
+                entire_cave_grid[(x + cave_width * dx, y + cave_height * dy)] = \
+                    modified_mod(cave_grid[(x, y)] + dx + dy, 9)
+
+    return dijskra(grid_to_rows(entire_cave_grid))
+
+
+def part3():
+    # TODO: Marcin: Improve time complexity by introducing heuristics and optimizations - e.g. following diagonal
+    pass
 
 
 def get_neighbours(point: (int, int)) -> list[(int, int)]:
@@ -44,48 +86,6 @@ def dijskra(cave_map: list[list[int]]) -> int:
                 to_visit.put((neighbour_cost, neighbour))
 
     return cost_map[destination_point]
-
-
-# I blindly started with DFS, given that it's relatively quick to implement and hoping it would be enough,
-# maybe with some additional optimizations...
-# But then I saw the main input and realized that for the optimum I need to traverse almost everything anyway which
-# usually is feasible for reasonably sized graphs, or if our goal is to visit all possible nodes,
-# but this one is actually pretty huge.
-# So Dijskra or A*?
-# A* should probably work better given that we have a relatively good heuristic that following a diagonal
-# should be close to the optimal path
-# Anyway, this is another great example where naive DFS takes ages while a better algorithm (Dijskra) is almost
-# instantaneous
-# 40
-def part1():
-    cave_map: list[list[int]] = get_input(15, lambda line: [int(risk_level) for risk_level in line])
-    return dijskra(cave_map)
-
-
-# 2907
-# TODO: Marcin: Rework this...
-def part2():
-    cave_map: list[list[int]] = get_input(15, lambda line: [int(risk_level) for risk_level in line])
-
-    new_cave_grid = create_grid(cave_map)
-
-    width = grid_width(new_cave_grid)
-    height = grid_height(new_cave_grid)
-
-    for i in range(1, 5):
-        for x in range(width):
-            for y in range(height):
-                new_cave_grid[(i * width + x, y)] = modified_mod(new_cave_grid[(i - 1) * width + x, y] + 1, 9)
-
-    width = grid_width(new_cave_grid)
-    height = grid_height(new_cave_grid)
-
-    for i in range(1, 5):
-        for x in range(width):
-            for y in range(height):
-                new_cave_grid[(x, i * height + y)] = modified_mod(new_cave_grid[x, (i - 1) * height + y] + 1, 9)
-
-    return dijskra(grid_to_rows(new_cave_grid))
 
 
 def modified_mod(number: int, mod_value: int) -> int:
