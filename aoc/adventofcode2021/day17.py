@@ -36,7 +36,7 @@ def can_hit(speed_vector: Point, x_min, x_max, y_min, y_max):
         speed_vector, position = simulate_step(speed_vector, position)
         if x_min <= position[0] <= x_max and y_min <= position[1] <= y_max:
             return True
-        elif position[1] < y_min:
+        elif position[1] < y_min:  # we missed the target
             return False
 
 
