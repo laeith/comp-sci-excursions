@@ -17,8 +17,8 @@ measure. **Computer Science Excursions** is a sample of such approach - these wi
 exercises spanning a very broad range of topics within software engineering and general science.
 
 Idea was initially inspired by [Peter Norvig's Teach Yourself Programming in Ten Years](https://norvig.com/21-days.html)
-and his [pytudes](https://github.com/norvig/pytudes) project. I don't think 10 years is enough, the journey itself is
-the goal. Never stop learning. Ever.
+and his [pytudes](https://github.com/norvig/pytudes) project. I'm not sure 10 years is enough, the journey itself is the
+goal. Never stop learning.
 
 ### Table of contents
 
@@ -30,8 +30,4 @@ the goal. Never stop learning. Ever.
 ---
 
 ![Craftsmanship by Nicolas Hoizey](static/craftmanship_nicolas_hoizey.jpg)
-
-> Sing clear-voiced Muse, of Hephaestus famed for skill. With bright-eyed Athena he taught me glorious crafts throughout the world - men who before used to dwell in caves in the mountains like wild beasts. But now that they have learned craftsmanship through Hephaestus famous for his art they live a peaceful life in own houses the whole year round.
->
-> -- Homeric hymn 
 
