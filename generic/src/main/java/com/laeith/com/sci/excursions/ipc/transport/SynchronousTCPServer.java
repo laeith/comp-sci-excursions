@@ -8,22 +8,22 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TCPServer implements Transport {
+public class SynchronousTCPServer implements Transport {
   
   public static final int PORT = 8080;
   public static final String HOST = "localhost";
   
   private final Socket activeSocket;
   
-  public TCPServer() throws IOException {
-      ServerSocket serverSocket = new ServerSocket(PORT);
-      activeSocket = serverSocket.accept();
+  public SynchronousTCPServer() throws IOException {
+    ServerSocket serverSocket = new ServerSocket(PORT);
+    activeSocket = serverSocket.accept();
   }
   
   @Override
   public byte[] receive() throws IOException {
     InputStream inputStream = activeSocket.getInputStream();
-    byte[] msgLength = inputStream.readNBytes(4);
+    byte[] msgLength = inputStream.readNBytes(4); // Read message length
     if (msgLength.length != 0) {
       int msgLen = ByteUtils.byteArrayToInt(msgLength);
       return inputStream.readNBytes(msgLen);
@@ -33,6 +33,9 @@ public class TCPServer implements Transport {
   
   @Override
   public void send(Message msg) throws IOException {
-    activeSocket.getOutputStream().write(msg.toByteArray());
+    // TODO: Marcin: does creation cost time?
+    var outputStream = activeSocket.getOutputStream();
+    outputStream.write(ByteUtils.intToByteArray(msg.getSerializedSize())); // Prepend message length
+    outputStream.write(msg.toByteArray());
   }
 }

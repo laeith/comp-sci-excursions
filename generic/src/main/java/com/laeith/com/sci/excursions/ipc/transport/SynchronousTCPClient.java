@@ -5,16 +5,15 @@ import com.laeith.com.sci.excursions.utils.ByteUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 
-public class TCPClient implements Transport {
+public class SynchronousTCPClient implements Transport {
   
   private final Socket socket;
   // TODO: try buffered reader instead of output streams?
   
-  public TCPClient() throws IOException {
-    socket = new Socket(TCPServer.HOST, TCPServer.PORT);
+  public SynchronousTCPClient() throws IOException {
+    socket = new Socket(SynchronousTCPServer.HOST, SynchronousTCPServer.PORT);
   }
   
   @Override
@@ -26,7 +25,7 @@ public class TCPClient implements Transport {
   
   @Override
   public void send(Message msg) throws IOException {
-    OutputStream outputStream = socket.getOutputStream();
+    var outputStream = socket.getOutputStream();
     outputStream.write(ByteUtils.intToByteArray(msg.getSerializedSize()));
     outputStream.write(msg.toByteArray());
   }
