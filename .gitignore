@@ -6,7 +6,6 @@ modules.xml
 
 #Java related
 .gradle
-gradle
 
 target
 output
