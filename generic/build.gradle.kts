@@ -21,6 +21,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 val agronaVer = "1.11.0"
 val vavrVer = "0.10.4"
 
@@ -73,12 +79,6 @@ dependencies {
     protobuf(files("messages/proto/"))
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
-    }
-}
-
 sourceSets {
     main {
         proto {
@@ -106,6 +106,10 @@ tasks.named("compileJava") {
     dependsOn("generateAvro")
     dependsOn("generateProto")
     dependsOn("generateSBE")
+}
+
+tasks.named("processResources") {
+    dependsOn("generateProto")
 }
 
 tasks.register<JavaExec>("generateSBE") {
