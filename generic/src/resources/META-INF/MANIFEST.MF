@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-com.laeith.com.sci.excursions.Main-Class: algorithms.princetoncoursera.Week2.Subset
-
