@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/merge-intervals/
 def merge_intervals(intervals: list[list[int]]):
     intervals.sort()  # O(NLogN)
 
