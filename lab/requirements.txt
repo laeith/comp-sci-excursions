@@ -4,3 +4,13 @@
 # bokeh==2.3.0
 # pillow==8.1.1
 # pyautogui==0.9.52
+
+
+# tqdm
+# rich
+# textual
+# fastapi
+# typer
+# pydantic
+# shiv
+# toga

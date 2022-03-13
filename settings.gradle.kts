@@ -1,4 +1,4 @@
 rootProject.name = "comp-sci-excursions"
 
-include("generic")
+include("generic:java")
 include("aoc:adventofcode2020")
