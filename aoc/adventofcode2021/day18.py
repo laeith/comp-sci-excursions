@@ -21,7 +21,7 @@ def explode(snailfish_num: list, depth_counter: int = 0):
     if depth_counter == 4:
         return True, snailfish_num[0], 0, snailfish_num[1]
 
-    # Reduce 'leftmost'
+    # Explode 'leftmost'
     was_reduced, left, last, right = explode(snailfish_num[0], depth_counter + 1)
     if was_reduced:
         return True, left, [last, add_to(snailfish_num[1], right, True)], 0
