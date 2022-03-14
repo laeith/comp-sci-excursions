@@ -10,7 +10,7 @@ def get_input(day_num: int, parser: Callable[[str], Any] = str, sep: str = '\n')
 
 
 def get_ints(line: str) -> list[str]:
-    return re.findall(r'\d+', line)
+    return re.findall(r'-?[0-9]+', line)
 
 
 Point = tuple[int, int]  # (x, y) points on a grid
