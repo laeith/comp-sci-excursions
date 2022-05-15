@@ -22,11 +22,12 @@ goal. Never stop learning.
 
 ### Table of contents
 
-| Year  | Description                                                                               | Extras|
-|-------|:------------------------------------------------------------------------------------------|---| 
-| 2021  | [Advent of Code 2021](aoc/adventofcode2021)                                               |     |
-| 2021  | [Wire protocol benchmarks](generic/java/src/main/java/com/laeith/com/sci/excursions/wire) | [Post](https://www.laeith.com/posts/2021-04-04-wire-formats/)|
-| Cont. | [Math/programming problems](generic/python/problems) |     |
+| Year  | Description                                                                               | Extras                                                                    |
+|-------|:------------------------------------------------------------------------------------------|---------------------------------------------------------------------------| 
+| 2022  | [CodinGame: Spring Challenge](generic/python/codingame/spring_challenge.py)               | [Post](https://www.laeith.com/posts/2022-04-22-codingame-springchallenge) |
+| 2021  | [Advent of Code 2021](aoc/adventofcode2021)                                               |                                                                           |
+| 2021  | [Wire protocol benchmarks](generic/java/src/main/java/com/laeith/com/sci/excursions/wire) | [Post](https://www.laeith.com/posts/2021-04-04-wire-formats/)             |
+| Cont. | [Math/programming problems](generic/python/problems)                                      |                                                                           |
 
 ---
 
