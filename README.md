@@ -18,7 +18,7 @@ exercises spanning a very broad range of topics within software engineering and 
 
 Idea was initially inspired by [Peter Norvig's Teach Yourself Programming in Ten Years](https://norvig.com/21-days.html)
 and his [pytudes](https://github.com/norvig/pytudes) project. I'm not sure 10 years is enough, the journey itself is the
-goal. Never stop learning.
+goal.
 
 ### Table of contents
 
