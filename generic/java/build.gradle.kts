@@ -27,6 +27,8 @@ java {
     }
 }
 
+val log4jVer = "2.18.0"
+
 val agronaVer = "1.11.0"
 val vavrVer = "0.10.4"
 
@@ -45,13 +47,17 @@ val xmlJacksonVer = "2.12.2"
 val woodstoxVer = "5.1.0"
 val dslJsonVer = "1.9.8"
 
+val javaAllocationInstrumenter = "3.3.0"
+val asmVer = "9.3"
+val byteBuddy = "1.12.12"
+
 dependencies {
+    implementation("org.apache.logging.log4j:log4j-api:$log4jVer")
+    implementation("org.apache.logging.log4j:log4j-core:$log4jVer")
 
     implementation("org.agrona:agrona:$agronaVer")
     implementation("io.vavr:vavr:$vavrVer")
     implementation("com.google.code.findbugs:annotations:$findbugsVer")
-
-//    implementation(files("${project.projectDir}/external/algs4.jar"))
 
 //  Serialization - wire formats
     implementation("com.google.protobuf:protobuf-java:$protobufVer")
@@ -67,6 +73,13 @@ dependencies {
 
 //    Memory layout tool
     implementation("org.openjdk.jol:jol-core:$jolVer")
+
+//    Instrumentation / measurements
+//    This is a custom build of google/allocation-instrumenter 3.3.0 with upgraded ASM version so that
+//    it works for JDK 17 objects
+    implementation(files("libs/java-allocation-instrumenter-3.3.ASM.PATCHED.JDK17.jar"))
+    implementation("net.bytebuddy:byte-buddy:$byteBuddy")
+    implementation("net.bytebuddy:byte-buddy-agent:$byteBuddy")
 
 //    Testing & benchmarking
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVer")
